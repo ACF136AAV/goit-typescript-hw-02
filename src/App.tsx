@@ -32,7 +32,9 @@ const App: React.FC = () => {
     const fetchImages = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('https://api.unsplash.com/search/photos', {
+        const response = await axios.get<{ results: Image[] }>(
+          'https://api.unsplash.com/search/photos',
+          {
           params: {
             query,
             page,
